@@ -1,0 +1,154 @@
+PUT recon
+{
+  "mappings": {
+    "dynamic": true, 
+    "dynamic_templates": [
+      {
+         "cost_element_list_type": {
+            "mapping": {
+               "type": "keyword",
+               "store" : true
+            },
+           "match_mapping_type": "string",
+           "path_match": "configuration.costElementsInfo.costElements"            
+         }      
+      }
+    ],
+    "properties": {
+        "coaId" : {
+          "type" : "keyword",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "store" : true
+        },
+        "configuration" : {
+          "properties" : {
+            "positionGroupInfo":{
+              "type": "object",
+              "enabled": false
+            },
+            "costElementsInfo":{
+              "type": "object",
+              "enabled": false
+            },
+            "currencyCode" : {
+              "type" : "keyword",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            },
+            "description" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            },
+            "fiscalYearEndDate" : {
+              "type" : "date",
+              "store" : true
+            },
+            "fiscalYearStartDate" : {
+              "type" : "date",
+              "store" : true
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            },
+            "workHoursPerYear" : {
+              "type" : "long",
+              "store" : true
+            }
+          }
+        },
+        "cqrsMetadata" : {
+          "properties" : {
+            "changesApplied" : {
+              "type" : "long",
+              "store" : true
+            },
+            "initialVersion" : {
+              "type" : "keyword",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            },
+            "updatedAt" : {
+              "type" : "date",
+              "store" : true
+            },
+            "updatedBy" : {
+              "type" : "keyword",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            },
+            "version" : {
+              "type" : "keyword",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              },
+              "store" : true
+            }
+          }
+        },
+        "createdAt" : {
+          "type" : "date",
+          "store" : true
+        },
+        "entityId" : {
+          "type" : "long",
+          "store" : true
+        },
+        "schemaVersion" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "store" : true
+        },
+        "wfid" : {
+          "type" : "keyword",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "store" : true
+        }
+      }
+  }
+}
